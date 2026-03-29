@@ -54,6 +54,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '../stores/auth';
 import LogoIcon from './LogoIcon.vue';
+import LogoIcon from './LogoIcon.vue';
 
 const authStore = useAuthStore();
 

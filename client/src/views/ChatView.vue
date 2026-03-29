@@ -64,7 +64,7 @@
             <!-- Avatar -->
             <div :class="[
               'w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm font-bold',
-              message.role === 'user' ? 'bg-indigo-600' : 'bg-gray-700'
+              message.role === 'user' ? 'bg-indigo-600' : 'bg-gray-800'
             ]">
               <span v-if="message.role === 'user'" class="text-white text-xs font-bold">U</span><LogoIcon v-else :size="20" />
             </div>
