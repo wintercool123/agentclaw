@@ -222,7 +222,7 @@ const sendMessage = async (text: string) => {
   try {
     const response = await apiFetch('/api/ai/chat', {
       method: 'POST',
-      body: JSON.stringify(
+      body: JSON.stringify({
       model: selectedModel.value,
       messages: messages.value.map(m => ({
         role: m.role,
