@@ -89,7 +89,7 @@
 
         <!-- Typing indicator -->
         <div v-if="isLoading" class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center"><LogoIcon :size="20" /></div>
+          <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center"><LogoIcon :size="20"></LogoIcon></div>
           <div class="bg-gray-800 rounded-2xl rounded-tl-sm px-4 py-3">
             <div class="flex gap-1">
               <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
