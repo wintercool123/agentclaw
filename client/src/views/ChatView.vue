@@ -43,7 +43,7 @@
       <div ref="messagesContainer" class="flex-1 overflow-y-auto p-6 space-y-6">
         <!-- Empty state -->
         <div v-if="messages.length === 0" class="flex flex-col items-center justify-center h-full text-center">
-          <div class="text-6xl mb-6">🦞</div>
+          <div class="mb-6"><LogoIcon :size="64" /></div>
           <h2 class="text-2xl font-bold mb-2">CodeClaw</h2>
           <p class="text-gray-400 max-w-md">
             AI-powered coding assistant. Powered by DeepSeek, GLM-4, and Kimi — at a fraction of the cost.
@@ -66,7 +66,7 @@
               'w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm font-bold',
               message.role === 'user' ? 'bg-indigo-600' : 'bg-gray-700'
             ]">
-              {{ message.role === 'user' ? 'U' : '🦞' }}
+              <span v-if="message.role === 'user'" class="text-white text-xs font-bold">U</span><LogoIcon v-else :size="20" />
             </div>
 
             <!-- Content -->
@@ -89,7 +89,7 @@
 
         <!-- Typing indicator -->
         <div v-if="isLoading" class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-sm">🦞</div>
+          <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center"><LogoIcon :size="20" /></div>
           <div class="bg-gray-800 rounded-2xl rounded-tl-sm px-4 py-3">
             <div class="flex gap-1">
               <div class="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
@@ -134,7 +134,7 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import axios from 'axios';
+
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 
@@ -219,7 +219,9 @@ const sendMessage = async (text: string) => {
   }
 
   try {
-    const response = await axios.post('/api/ai/chat', {
+    const response = await apiFetch('/api/ai/chat', {
+      method: 'POST',
+      body: JSON.stringify(
       model: selectedModel.value,
       messages: messages.value.map(m => ({
         role: m.role,
