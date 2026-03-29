@@ -230,8 +230,8 @@ const sendMessage = async (text: string) => {
       }))
     });
 
-    const assistantContent = response.data.choices?.[0]?.message?.content || 'No response';
-    const tokensInResponse = response.data.usage?.total_tokens || 0;
+    const assistantContent = response.choices?.[0]?.message?.content || 'No response';
+    const tokensInResponse = response.usage?.total_tokens || 0;
     
     tokensUsed.value += tokensInResponse;
 
