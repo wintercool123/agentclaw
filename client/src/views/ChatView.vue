@@ -228,9 +228,7 @@ const sendMessage = async (text: string) => {
         role: m.role,
         content: m.content
       }))
-        })
-
-        }))
+    });
     const tokensInResponse = response.usage?.total_tokens || 0;
     
     tokensUsed.value += tokensInResponse;
