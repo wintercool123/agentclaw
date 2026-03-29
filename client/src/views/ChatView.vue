@@ -228,7 +228,7 @@ const sendMessage = async (text: string) => {
         role: m.role,
         content: m.content
       }))
-    });
+        })
 
     const assistantContent = response.choices?.[0]?.message?.content || 'No response';
     const tokensInResponse = response.usage?.total_tokens || 0;
