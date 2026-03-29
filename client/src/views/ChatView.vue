@@ -133,6 +133,7 @@
 </template>
 
 <script setup lang="ts">
+import LogoIcon from '../components/LogoIcon.vue';
 import { ref, computed, nextTick } from 'vue';
 
 import { marked } from 'marked';
